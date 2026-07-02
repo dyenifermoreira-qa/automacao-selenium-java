@@ -20,11 +20,10 @@ public class LoginTest {
 
     @BeforeEach
     public void setUp() {
-        // Inicializa o ChromeDriver automaticamente
         WebDriverManager.chromedriver().setup();
         
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--start-maximized"); // Abre o navegador maximizado
+        options.addArguments("--start-maximized");
         
         driver = new ChromeDriver(options);
         loginPage = new LoginPage(driver);
@@ -35,20 +34,16 @@ public class LoginTest {
 
     @Test
     public void deveRealizarLoginComSucesso() {
-        // Executa o fluxo usando a massa padrão do site
         loginPage.realizarLogin("standard_user", "secret_sauce");
 
-        // Validação: Verifica se fomos redirecionados para a tela de Produtos
         String tituloEsperado = "Products";
         assertEquals(tituloEsperado, productsPage.obterTituloDaPagina());
     }
 
     @Test
     public void deveExibirErroComIniciaisInvalidas() {
-        // Executa o fluxo com usuário incorreto
         loginPage.realizarLogin("usuario_invalido", "senha_invalida");
 
-        // Validação: Verifica se a mensagem de erro apropriada apareceu
         String mensagemErro = loginPage.obterMensagemErro();
         assertTrue(mensagemErro.contains("Username and password do not match any user in this service"));
     }
@@ -56,7 +51,7 @@ public class LoginTest {
     @AfterEach
     public void tearDown() {
         if (driver != null) {
-            driver.quit(); // Fecha o navegador ao fim de cada teste
+            driver.quit();
         }
     }
 }
