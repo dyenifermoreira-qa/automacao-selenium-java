@@ -10,19 +10,16 @@ public class LoginPage {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    // 1. Mapeamento dos Elementos (Locators)
     private By usernameInput = By.id("user-name");
     private By passwordInput = By.id("password");
     private By loginButton = By.id("login-button");
     private By errorMessage = By.cssSelector("[data-test='error']");
 
-    // 2. Construtor da Página
     public LoginPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    // 3. Ações da Tela
     public void acessarAplicacao() {
         driver.get("https://www.saucedemo.com/");
     }
