@@ -12,7 +12,6 @@ public class UserApiTest {
 
     @BeforeAll
     public static void setup() {
-        // Define a URL base da API que vamos testar
         RestAssured.baseURI = "https://reqres.in/api";
     }
 
@@ -21,11 +20,11 @@ public class UserApiTest {
         given()
             .contentType(ContentType.JSON)
         .when()
-            .get("/users/2") // Busca o usuário de ID 2
+            .get("/users/2")
         .then()
-            .statusCode(200) // Valida se o status retornado é 200 (OK)
-            .body("data.id", equalTo(2)) // Valida se o ID no corpo é 2
-            .body("data.email", equalTo("janet.weaver@reqres.in")) // Valida o e-mail
+            .statusCode(200)
+            .body("data.id", equalTo(2))
+            .body("data.email", equalTo("janet.weaver@reqres.in"))
             .body("data.first_name", equalTo("Janet"));
     }
 
@@ -40,11 +39,11 @@ public class UserApiTest {
             .contentType(ContentType.JSON)
             .body(corpoRequisicao)
         .when()
-            .post("/users") // Envia um POST para criar o usuário
+            .post("/users") 
         .then()
-            .statusCode(201) // Valida se foi criado com sucesso (201 Created)
+            .statusCode(201) 
             .body("name", equalTo("Dyenifer"))
             .body("job", equalTo("QA Engineer"))
-            .body("id", notNullValue()); // Garante que a API gerou um ID
+            .body("id", notNullValue());
     }
 }
