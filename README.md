@@ -18,7 +18,7 @@ O projeto foi desenvolvido utilizando o padrão de arquitetura **Page Objects Pa
 ```text
 src/
 ├── main/java/pages/
-│   ├── LoginPage.java      # Mapeamento e ações da tela de login
-│   └── ProductsPage.java   # Mapeamento e ações da tela de produtos
+│   ├── LoginPage.java
+│   └── ProductsPage.java
 └── test/java/tests/
-    └── LoginTest.java      # Cenários de testes automatizados (Sucesso e Falha)
+    └── LoginTest.java
